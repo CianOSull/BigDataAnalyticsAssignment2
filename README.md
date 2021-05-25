@@ -1,5 +1,5 @@
 # BigDataAnalyticsAssignment2
- Second Project for Big Data Analytics module.<br />
+ Second Project for Big Data Analytics module that is about using Spark SQL.<br />
  
 ## Project specifiction:<br />
 **Tasks**:
