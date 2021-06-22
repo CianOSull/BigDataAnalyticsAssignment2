@@ -36,7 +36,114 @@ gathering and printing by the screen the result of the Spark SQL job.
 <br /> The resVAL iterator returned by 'collect' must be printed straight away, 
 you cannot edit it to alter its format for printing.<br />
 
+**Task 1**:<br />
+Technology:<br />
+Spark SQL <br />
+<br />
+Your task is to: <br />
+• Compute the amount of trips starting from and finishing at each station_name. <br /> 
+<br />
+_Complete the function my_main of the Python program._<br />
+o Do not modify the name of the function nor the parameters it receives. <br />
+o The entire work must be done within Spark SQL: <br />
+1. The function my_main must start with the creation operation 'read' above loading the dataset to Spark SQL. <br />
+2. The function my_main must finish with an action operation 'collect', gathering and printing by the screen the result of the Spark SQL job. <br />
+3. The function my_main must not contain any other action operation 'collect' other than the one appearing at the very end of the function. <br />
+4. The resVAL iterator returned by 'collect' must be printed straight away, you cannot edit it to alter its format for printing. <br />
+<br />
+Results: <br />
+Output one Row per station_name. Rows must follow alphabetic order in the name of the station. Each Row must have the following fields: <br />
+Row(station, num_departure_trips, num_arrival_trips) <br />
+<br />
 
+**Task 2**: <br />
+Technology:<br />
+Spark SQL <br />
+<br />
+Your task is to: <br />
+Compute the top_n_bikes with highest total duration time for their trips. <br />
+<br />
+_Complete the function my_main of the Python program._<br />
+o Do not modify the name of the function nor the parameters it receives. <br />
+o The entire work must be done within Spark SQL: <br />
+1. The function my_main must start with the creation operation 'read' above loading the dataset to Spark SQL. <br />
+2. The function my_main must finish with an action operation 'collect', gathering and printing by the screen the result of the Spark SQL job. <br />
+3. The function my_main must not contain any other action operation 'collect' other than the one appearing at the very end of the function. <br />
+4. The resVAL iterator returned by 'collect' must be printed straight away, you cannot edit it to alter its format for printing. <br />
+<br />
+Results: <br />
+Output one Row per bike_id. Rows must follow decreasing order in highest total duration time for their trips. Each Row must have the following fields: <br />
+Row(bike_id, totalTime, numTrips=total_number_of_trips) <br />
+<br />
+
+**Task 3**: <br />
+Technology:<br />
+Spark SQL <br />
+<br />
+Your task is to: <br />
+• Sometimes bikes are re-organised (moved) from station A to station B to balance the amount of bikes available in both stations. A truck operates this bike re-balancing service, and the trips done by-truck are not logged into the dataset. Compute all the times a given bike_id was moved by the truck re-balancing system. <br /> 
+<br />
+_Complete the function my_main of the Python program._<br />
+o Do not modify the name of the function nor the parameters it receives. <br />
+o The entire work must be done within Spark SQL: <br />
+1. The function my_main must start with the creation operation 'read' above loading the dataset to Spark SQL. <br />
+2. The function my_main must finish with an action operation 'collect', gathering and printing by the screen the result of the Spark SQL job. <br />
+3. The function my_main must not contain any other action operation 'collect' other than the one appearing at the very end of the function. <br />
+4. The resVAL iterator returned by 'collect' must be printed straight away, you cannot edit it to alter its format for printing. <br />
+<br />
+Results: <br />
+Output one Row per moving trip. Rows must follow temporal order. Each Row must have the following fields: <br /> 
+Row(start_time, start_station_name, stop_time, stop_station_name) <br />
+For example, if the dataset contains the following 2 trips: <br />
+o Trip1: A user used bike_id to start a trip from Station1 on 2019/05/10 09:00:00 and finished the trip at Station2 on 2019/05/10 10:00:00 <br />
+o Trip2: A user used bike_id to start a trip from Station3 on 2019/05/10 11:00:00 and finished the trip at Station4 on 2019/05/10 12:00:00 <br />
+<br />
+And the dataset does not contain any extra trip: <br />
+o Trip3: A user used bike_id to start a trip from Station2 and finish at Station3 anytime between 2019/05/10 10:00:00 and 2019/05/10 11:00:00 <br />
+Then it is clear that the bike was moved from Station2 to Station3 by truck, and we output: <br />
+Row(start_time=2019/05/10 10:00:00, start_station_name=Station2, stop_time=2019/05/10 11:00:00, stop_station_name=Station3) <br />
+<br />
+
+**Task 4**: <br />
+Technology:<br />
+Python (without using the Spark library). <br />
+<br />
+Your task is to:<br />
+•  Compute your own sequential implementation of the PageRank algorithm for the nodes of a given graph (e.g., my_dataset_2). <br /> 
+<br />
+_Complete the function compute_page_rank of the Python program._<br />
+o Do not modify the name of the function nor the parameters it receives. <br />
+o The function must return a dictionary with (key, value) pairs, where: <br />
+1. Each key represents a node id. <br />
+2. Each value represents the pagerank value computed for this node id. <br />
+<br />
+Results:<br />
+Given the requested dictionary, the program automatically outputs one (key, value) pair per line. Lines follow a decreasing order in the page rank value of the node. Each line has the following format: <br />
+id=key ; pagerank=value \n <br />
+<br />
+
+**Task 5**: <br />
+Technology:<br />
+Spark SQL <br />
+<br />
+Your task is to:<br />
+• Using Spark SQL, compute the shortest path distance from a source node to the remaining nodes of the graph. <br /> 
+<br />
+_Complete the function my_main of the Python program._<br />
+o Do not modify the name of the function nor the parameters it receives. <br />
+o The entire work must be done within Spark SQL: <br />
+1. The function my_main must start with the creation operation 'read' above loading the dataset to Spark SQL. <br />
+2. The function my_main must finish with an action operation 'collect', gathering and printing by the screen the result of the Spark SQL job. <br />
+3. The function my_main must not contain any other action operation 'collect' other than the one appearing at the very end of the function. <br />
+4. The resVAL iterator returned by 'collect' must be printed straight away, you cannot edit it to alter its format for printing. <br />
+<br />
+o The difficulty of this exercise is on coming up with your own Spark SQL implementation of the Dijkstra shortest path algorithm. That is, you must implement a Spark SQL program following the steps of the Dijkstra algorithm explained in class. <br />
+<br />
+Results:<br />
+Output one Row per bike_id. Rows must follow a decreasing order in the cost of the path. <br />
+Each Row must have the following fields: <br />
+Row(id, cost, path) <br />
+<br />
 
 **Dataset 1 Information:**<br />
 This dataset occupies ~80MB and contains 73 files. Each file contains all the trips 
